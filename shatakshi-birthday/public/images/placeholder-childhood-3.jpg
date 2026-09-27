@@ -1,0 +1,22 @@
+<svg width="800" height="1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F8F4EF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8DDD0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A61E4D;stop-opacity:0.12" />
+      <stop offset="100%" style="stop-color:#D6B98C;stop-opacity:0.12" />
+    </linearGradient>
+    
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#accent)"/>
+  
+  <circle cx="400" cy="460" r="133.33333333333334" fill="#A61E4D" opacity="0.15"/>
+  <circle cx="400" cy="460" r="88.88888888888889" fill="#D6B98C" opacity="0.2"/>
+  
+  <text x="400" y="560" font-family="Georgia, serif" font-size="26.666666666666668" fill="#A61E4D" text-anchor="middle" opacity="0.5">School Days</text>
+  <text x="400" y="600" font-family="Georgia, serif" font-size="17.77777777777778" fill="#6B6B6B" text-anchor="middle" opacity="0.5">📷 Placeholder Image</text>
+  <text x="400" y="640" font-family="Georgia, serif" font-size="16" fill="#D6B98C" text-anchor="middle" opacity="0.6">Shatakshi • Age 10</text>
+</svg>
