@@ -106,8 +106,8 @@
 
 <script type="module">
 // Supabase configuration
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://your-project.supabase.co';
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'your-anon-key-here';
+const supabaseUrl = 'https://your-project.supabase.co';
+const supabaseKey = 'your-anon-key-here';
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Load existing wishes from Supabase on page load
