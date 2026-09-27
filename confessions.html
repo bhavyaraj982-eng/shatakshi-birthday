@@ -96,7 +96,24 @@ if (document.getElementById('today')) { document.getElementById('today').textCon
 
 // Load existing confessions from localStorage on page load
 document.addEventListener('DOMContentLoaded', () => {
-  const confessions = JSON.parse(localStorage.getItem('shatakshi_confessions') || '[]');
+  
+// Supabase initialization
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://rkfvqzdktebjibmpeiqb.supabase.co';
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJrZnZxemRrdGViamlibXBlaXFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1MjI1MjIsImV4cCI6MjEwNjA5ODUyMn0.rIrZdPQ81aTAI3-T4MfGKfVjlgFuor1Yvs24bMjgnQM';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+// Load existing confessions from Supabase on page load
+const { data: confessions, error } = await supabase
+  .from('confessions')
+  .select('*')
+  .order('created_at', { ascending: false });
+
+if (error) {
+  console.error('Error loading confessions:', error);
+  // Fallback to localStorage
+  const fallbackConfessions = JSON.parse(localStorage.getItem('shatakshi_confessions') || '[]');
+  // ... use fallback
+}
   const list = document.getElementById('confessions-list');
   
   // Clear the "no confessions yet" message if there are confessions
