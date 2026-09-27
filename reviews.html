@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wishes/Reviews • For Shatakshi</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Courier+Prime:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Courier Prime', monospace; background: #fdf5e6; color: #2b2b2b; line-height: 1.7; min-height: 100vh; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E"); }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 20px; }
+  header { text-align: center; padding: 40px 0 30px; border-bottom: 3px double #c97b7b; margin-bottom: 30px; }
+  .site-title { font-family: 'Press Start 2P', cursive; font-size: 1.5rem; color: #c97b7b; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .tagline { font-family: 'VT323', monospace; font-size: 1.5rem; color: #5a5a5a; margin-top: 10px; letter-spacing: 1px; }
+  .nav-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 30px 0; padding: 15px 0; border-top: 2px dashed #c97b7b; border-bottom: 2px dashed #c97b7b; }
+  .nav-bar a { display: inline-block; padding: 10px 18px; background: #fff; border: 2px solid #e8d5e0; color: #c97b7b; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; border-radius: 20px; }
+  .nav-bar a:hover { background: #fff0f5; border-color: #c97b7b; color: #a64d4d; transform: translateY(-2px); }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 20px; }
+  h1 { font-family: 'VT323', monospace; font-size: 2.5rem; color: #c97b7b; text-align: center; margin-bottom: 10px; }
+  .tagline { font-family: 'VT323', monospace; font-size: 1.5rem; color: #5a5a5a; text-align: center; margin-top: 10px; letter-spacing: 1px; }
+  .intro { text-align: center; max-width: 500px; margin: 0 auto 40px; color: #5a5a5a; font-size: 1.1rem; }
+  .wish { background: #fff; border: 1px solid #f0e6e0; border-radius: 15px; padding: 25px; margin-bottom: 20px; }
+  .wish-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+  .wish-avatar { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1.2rem; }
+  .wish-name { font-weight: 700; color: #2b2b2b; font-size: 1.1rem; }
+  .wish-stars { color: #e8c547; font-size: 1rem; }
+  .wish-date { color: #888; font-size: 0.85rem; }
+  .wish-text { color: #4a4a4a; line-height: 1.7; white-space: pre-wrap; margin-top: 10px; }
+  .confession-form { background: #fdfdfd; border: 2px solid #f0e6e0; border-radius: 20px; padding: 25px; margin-bottom: 30px; }
+  .confession-form h3 { font-family: 'VT323', monospace; font-size: 1.3rem; color: #c97b7b; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+  .form-group { margin-bottom: 15px; }
+  label { display: block; margin-bottom: 5px; font-weight: 700; color: #2b2b2b; }
+  input, textarea { width: 100%; padding: 12px; border: 2px solid #f0e6e0; border-radius: 8px; font-family: 'Courier Prime', monospace; font-size: 1rem; transition: border-color 0.2s; }
+  input:focus, textarea:focus { outline: none; border-color: #c97b7b; }
+  .btn { background: #c97b7b; color: #fff; border: none; padding: 12px 30px; border-radius: 4px; font-family: 'VT323', monospace; font-size: 1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: background 0.2s; }
+  .btn:hover { background: #a64d4d; }
+  footer { text-align: center; padding: 40px 0 20px; border-top: 2px dashed #c97b7b; margin-top: 50px; }
+  .visitor-box { display: inline-block; background: #fff; border: 3px inset #c97b7b; padding: 15px 25px; margin: 20px auto; font-family: 'VT323', monospace; font-size: 1.3rem; color: #c97b7b; }
+  .visitor-counter { font-family: 'VT323', monospace; font-size: 2rem; color: #c97b7b; font-weight: 700; }
+  footer p { color: #888; font-size: 0.9rem; }
+  .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.6s ease forwards; }
+  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+  .delay-6 { animation-delay: 0.6s; }
+  .delay-7 { animation-delay: 0.6s; }
+  .delay-8 { animation-delay: 0.7s; }
+  @media (max-width: 600px) { .wrap { padding: 15px; } h1 { font-size: 2rem; } }
+  ::selection { background: #c97b7b; color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="masthead">
+    <div class="site-title">FOR SHATAKSHI</div>
+    <p class="tagline">wishes/reviews</p>
+  </header>
+  <nav class="nav-bar">
+    <a href="index.html">🏠 Home</a>
+    <a href="timeline.html">📸 Timeline</a>
+    <a href="videos.html">🎬 Videos</a>
+    <a href="scrapbook.html">✂️ Scrapbook</a>
+    <a href="reviews.html">💌 Wishes/Reviews</a>
+    <a href="gallery.html">🖼️ Gallery</a>
+    <a href="letter.html">💌 Letter</a>
+    <a href="confessions.html">🤫 Confess</a>
+  </nav>
+</header>
+<div class="wrap">
+  <h1>Wishes/Reviews</h1>
+  <p class="tagline">five stars. infinite love. confess something.</p>
+  <p class="intro">Everyone wanted to leave you something they'll probably never say this dramatically in person. Or maybe a secret you've never said out loud.</p>
+  
+  <section class="confession-form fade-in" style="margin-bottom:30px;">
+    <h3>Leave a Wish or Confession</h3>
+    <form id="review-form" class="confession-form">
+      <div class="form-group">
+        <label for="name">Your Name <span style="color:#c97b7b;">*</span></label>
+        <input type="text" id="name" name="name" placeholder="What should we call you?" maxlength="30" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Your Wish/Confession <span style="color:#c97b7b;">*</span></label>
+        <textarea id="message" name="message" placeholder="Type it out... no one else will know it was you." maxlength="500" rows="4" required></textarea>
+        <div class="flex justify-between mt-2"><span class="char-count">0</span>/500<span style="font-family:'VT323',monospace;color:#888;font-size:.8rem;">Anonymous</span></div>
+      </div>
+      <button type="submit" class="btn" style="width:100%;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Submit Wish/Confession</button>
+      <p style="text-align:center;margin-top:12px;font-family:'VT323',monospace;color:#c97b7b;font-size:.85rem;">Submitted anonymously. No emails, no tracking, no judgment.</p>
+    </form>
+  </section>
+  
+  <section>
+    <h2 style="font-family:'VT323',monospace;color:#c97b7b;font-size:1.5rem;margin-bottom:20px;text-align:center;">Shared Wishes & Confessions</div>
+    <div id="reviews-list">
+      <div style="text-align:center;padding:40px;color:#888;">No wishes yet. Be the first to whisper something into the void.</div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="visitor-box">Visitors: <span class="visitor-counter" id="counter">00000</span></div>
+    <p style="font-family:'VT323',monospace;color:#c97b7b;font-size:1.2rem;margin-top:15px;">For Shatakshi • Always • ∞</p>
+    <p style="margin-top:10px;color:#888;font-size:.85rem;">Made with love, stardust, and too many coffee runs ☕✨</p>
+  </footer>
+
+<script>
+function updateCounters() {
+  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits')
+    .then(r => r.json())
+    .then(d => { const val = String(d.value).padStart(5, '0'); document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = val); })
+    .catch(() => { document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = '00001'); });
+}
+updateCounters();
+
+const form = document.getElementById('review-form');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!name || !message) return;
+  
+  const btn = document.querySelector('.btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  
+  try {
+    const res = await fetch('https://api.countapi.xyz/hit/shatakshi-birthday/confessions', {method:'POST'});
+    const data = await res.json();
+    
+    const optimisticId = `temp-${Date.now()}`;
+    const list = document.getElementById('reviews-list');
+    const article = document.createElement('article');
+    article.className = 'wish';
+    article.style.opacity = '0';
+    article.style.transform = 'translateY(20px)';
+    article.style.transition = 'all 0.4s ease';
+    article.innerHTML = `
+      <div class="wish-header">
+        <div class="wish-avatar" style="background:${document.getElementById('name').value.charAt(0) || 'A'}">${document.getElementById('name').value.charAt(0).toUpperCase()}</div>
+        <div>
+          <div class="wish-name">${document.getElementById('name').value.trim()}</div>
+          <div class="wish-stars">★★★★★</div>
+        </div>
+        <div class="wish-date">${new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'})}</div>
+      </div>
+      <div class="wish-text">${messageInput.value.trim()}</div>
+    `;
+    list.insertBefore(article, list.firstChild);
+    requestAnimationFrame(() => {
+      article.style.opacity = '1';
+      article.style.transform = 'translateY(0)';
+    });
+    
+    document.getElementById('review-form').reset();
+  } catch (err) {
+    console.error(err);
+    alert('Failed to submit. Try again.');
+  } finally {
+    const btn = document.querySelector('button[type=submit]');
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Submit Wish/Confession';
+  }
+});
+
+function updateCounters() {
+  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits')
+    .then(r => r.json())
+    .then(d => { const val = String(d.value).padStart(5, '0'); document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = val); })
+    .catch(() => { document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = '00001'); });
+}
+updateCounters();
+</script>
+</body>
+</html>
