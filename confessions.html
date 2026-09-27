@@ -95,7 +95,7 @@
 if (document.getElementById('today')) { document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'}); }
 
 // Load existing confessions from localStorage on page load
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   
 // Supabase initialization
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://rkfvqzdktebjibmpeiqb.supabase.co';

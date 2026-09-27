@@ -116,7 +116,7 @@ function updateCounters() {
 updateCounters();
 
 // Load existing wishes from localStorage on page load
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const wishes = JSON.parse(localStorage.getItem('shatakshi_wishes') || '[]');
   const list = document.getElementById('reviews-list');
   
