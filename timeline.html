@@ -26,7 +26,7 @@
   .timeline-item h3 { font-family: 'VT323', monospace; color: #c97b7b; margin-bottom: 5px; font-size: 1.3rem; }
   .timeline-item p { color: #5a5a5a; font-size: 0.95rem; }
   .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
-  .photo-item { aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5f0eb; transition: transform 0.3s; }
+  .photo-item { aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5f0eb; transition: transform 0.3s; cursor: pointer; }
   .photo-item:hover { transform: scale(1.03); }
   .photo-item img { width: 100%; height: 100%; object-fit: cover; }
   .photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, #fde4ec 0%, #fff0e0 100%); }
@@ -60,7 +60,7 @@
     <a href="index.html">🏠 Home</a>
     <a href="timeline.html">📸 Timeline</a>
     <a href="videos.html">🎬 Videos</a>
-    <a href="scrapbook.html">✂️ Scrapbook</a>
+    
     <a href="reviews.html">💌 Wishes/Reviews</a>
     <a href="gallery.html">🖼️ Gallery</a>
     <a href="letter.html">💌 Letter</a>
@@ -74,7 +74,7 @@
   
   <div class="timeline">
     <div class="timeline-item">
-      <img src="assets/images/GOOD1.jpg" alt="Childhood" style="width:100%;max-width:400px;border-radius:10px;margin-bottom:10px;border:3px solid #fff;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <img src="assets/images/GOOD3.jpg" alt="Childhood" style="width:100%;max-width:400px;border-radius:10px;margin-bottom:10px;border:3px solid #fff;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
       <h3>Childhood</h3>
       <p>First steps, first words, first everything. The years when everything was magic.</p>
     </div>
@@ -102,10 +102,12 @@
 <script>
 document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
 function updateCounters() {
-  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits')
-    .then(r => r.json())
-    .then(d => { const val = String(d.value).padStart(5, '0'); document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = val); })
-    .catch(() => { document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = '00001'); });
+  let count = localStorage.getItem('shatakshi_visits');
+  if (!count) count = '00001';
+  else count = String(parseInt(count) + 1).padStart(5, '0');
+  localStorage.setItem('shatakshi_visits', count);
+  document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = count);
+  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits').then(r => r.json()).catch(() => {});
 }
 updateCounters();
 </script>

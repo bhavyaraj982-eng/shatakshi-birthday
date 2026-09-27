@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Love Letters • For Shatakshi</title>
+<title>Wishes/Reviews • For Shatakshi</title>
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=Courier+Prime:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,6 +26,14 @@
   .wish-stars { color: #e8c547; font-size: 1rem; }
   .wish-date { color: #888; font-size: 0.85rem; }
   .wish-text { color: #4a4a4a; line-height: 1.7; white-space: pre-wrap; margin-top: 10px; }
+  .confession-form { background: #fdfdfd; border: 2px solid #f0e6e0; border-radius: 20px; padding: 25px; margin-bottom: 30px; }
+  .confession-form h3 { font-family: 'VT323', monospace; font-size: 1.3rem; color: #c97b7b; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+  .form-group { margin-bottom: 15px; }
+  label { display: block; margin-bottom: 5px; font-weight: 700; color: #2b2b2b; }
+  input, textarea { width: 100%; padding: 12px; border: 2px solid #f0e6e0; border-radius: 8px; font-family: 'Courier Prime', monospace; font-size: 1rem; transition: border-color 0.2s; }
+  input:focus, textarea:focus { outline: none; border-color: #c97b7b; }
+  .btn { background: #c97b7b; color: #fff; border: none; padding: 12px 30px; border-radius: 4px; font-family: 'VT323', monospace; font-size: 1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: background 0.2s; }
+  .btn:hover { background: #a64d4d; }
   footer { text-align: center; padding: 40px 0 20px; border-top: 2px dashed #c97b7b; margin-top: 50px; }
   .visitor-box { display: inline-block; background: #fff; border: 3px inset #c97b7b; padding: 15px 25px; margin: 20px auto; font-family: 'VT323', monospace; font-size: 1.3rem; color: #c97b7b; }
   .visitor-counter { font-family: 'VT323', monospace; font-size: 2rem; color: #c97b7b; font-weight: 700; }
@@ -38,6 +46,8 @@
   .delay-4 { animation-delay: 0.4s; }
   .delay-5 { animation-delay: 0.5s; }
   .delay-6 { animation-delay: 0.6s; }
+  .delay-7 { animation-delay: 0.6s; }
+  .delay-8 { animation-delay: 0.7s; }
   @media (max-width: 600px) { .wrap { padding: 15px; } h1 { font-size: 2rem; } }
   ::selection { background: #c97b7b; color: #fff; }
 </style>
@@ -47,93 +57,46 @@
 <header>
   <div class="masthead">
     <div class="site-title">FOR SHATAKSHI</div>
-    <p class="tagline">love letters</p>
+    <p class="tagline">wishes/reviews</p>
   </header>
   <nav class="nav-bar">
     <a href="index.html">🏠 Home</a>
     <a href="timeline.html">📸 Timeline</a>
     <a href="videos.html">🎬 Videos</a>
-    <a href="scrapbook.html">✂️ Scrapbook</a>
-    <a href="wishes.html">💌 Wishes</a>
+    <a href="wishes.html">💌 Wishes/Reviews</a>
     <a href="gallery.html">🖼️ Gallery</a>
     <a href="letter.html">💌 Letter</a>
-    <a href="confessions.html">🤫 Confessions</a>
-    <a href="dashboard.html">🏛️ Archive</a>
+    <a href="confessions.html">🤫 Confess</a>
   </nav>
 </header>
 <div class="wrap">
-  <h1>Love Letters</h1>
-  <p class="tagline">five stars. infinite love.</p>
-  <p class="intro">Everyone wanted to leave you something they'll probably never say this dramatically in person.</p>
+  <h1>Wishes/Reviews</h1>
+  <p class="tagline">five stars. infinite love. confess something.</p>
+  <p class="intro">Everyone wanted to leave you something they'll probably never say this dramatically in person. Or maybe a secret you've never said out loud.</p>
   
-  <div class="wishes">
-    <article class="wish">
-      <div class="wish-header">
-        <div class="wish-avatar" style="background:#c97b7b;">P</div>
-        <div>
-          <div class="wish-name">Priya Sharma</div>
-          <div class="wish-stars">★★★★★</div>
-        </div>
-        <div class="wish-date">March 15, 2024</div>
+  <section class="confession-form">
+    <h3>Leave a Wish or Confession</h3>
+    <form id="review-form" class="confession-form">
+      <div class="form-group">
+        <label for="name">Your Name <span style="color:#c97b7b;">*</span></label>
+        <input type="text" id="name" name="name" placeholder="What should we call you?" maxlength="30" required>
       </div>
-      <div class="wish-text">Shatakshi, where do I even begin? You're the kind of friend who shows up with soup when I'm sick, remembers how I take my coffee, and somehow knows exactly what to say when my world feels like it's falling apart. I've watched you grow from the girl who was afraid of roller coasters to the woman who faces life's biggest drops with grace. Your laughter is contagious, your heart is enormous, and your ability to make everyone around you feel seen is a rare gift. Thank you for the 3 AM conversations, the spontaneous dance parties in the kitchen, and for being my person through every season. Here's to another year of you being unapologetically, beautifully you. Love you to the moon and back.</div>
-    </article>
-    <article class="wish">
-      <div class="wish-header">
-        <div class="wish-avatar" style="background:#d4b88c;">R</div>
-        <div>
-          <div class="wish-name">Rahul Mehta</div>
-          <div class="wish-stars">★★★★★</div>
-        </div>
-        <div class="wish-date">March 15, 2024</div>
+      <div class="form-group">
+        <label for="message">Your Wish/Confession <span style="color:#c97b7b;">*</span></label>
+        <textarea id="message" name="message" placeholder="Type it out... no one else will know it was you." maxlength="500" rows="4" required></textarea>
+        <div class="flex justify-between mt-2"><span class="char-count">0</span>/500<span style="font-family:'VT323',monospace;color:#888;font-size:.8rem;">Anonymous</span></div>
       </div>
-      <div class="wish-text">Happy Birthday to the only person I know who can make a grocery run feel like an adventure. Shats, you have this incredible ability to find magic in the mundane - whether it's turning a traffic jam into a concert or making burnt toast taste like a Michelin meal with your commentary. I've lost count of the times you've talked me off a ledge (sometimes literal, mostly metaphorical) with just the right mix of tough love and terrible jokes. You're the sister I never had but always needed. Never stop being the chaos that holds us all together. Can't wait to see what trouble we get into this year.</div>
-    </article>
-    <article class="wish">
-      <div class="wish-header">
-        <div class="wish-avatar" style="background:#0f172a;">A</div>
-        <div>
-          <div class="wish-name">Ananya Krishnan</div>
-          <div class="wish-stars">★★★★★</div>
-        </div>
-        <div class="wish-date">March 15, 2024</div>
-      </div>
-      <div class="wish-text">To my beautiful Shatakshi - I still remember the first day we met in college, you had paint on your jeans and the brightest smile. Thirteen years later, that smile still lights up every room you walk into. You've been my witness through heartbreaks, promotions, quarter-life crises, and everything in between. What I love most about you isn't just your kindness - it's your courage. The way you've built a life that's authentically yours, the way you love without holding back, the way you choose joy even on hard days. You inspire me to be braver, softer, more present. Thank you for being my constant. This year, I wish you all the small beautiful moments and the big wild dreams. You deserve every single one.</div>
-    </article>
-    <article class="wish">
-      <div class="wish-header">
-        <div class="wish-avatar" style="background:#c97b7b;">K</div>
-        <div>
-          <div class="wish-name">Karan Singh</div>
-          <div class="wish-stars">★★★★★</div>
-        </div>
-        <div class="wish-date">March 15, 2024</div>
-      </div>
-      <div class="wish-text">Shatakshi! Another year older, another year wiser, another year of you pretending you don't know the lyrics to every 2000s Bollywood song (we all know you do). You're the glue in this friend group - the one who remembers birthdays, plans the reunions, sends the memes at 2 AM, and somehow makes everyone feel like they're your favorite. Your empathy is a superpower. The way you listen - really listen - makes people feel heard in a world that's always rushing. I've seen you give the shirt off your back (literally, that one time at the concert) and stay up all night helping a friend with a presentation. You're rare. Don't ever change. Except maybe stop stealing my fries. Love you.</    </div>
-  </article>
-  <article class="wish">
-      <div class="wish-header">
-        <div class="wish-avatar" style="background:#d4b88c;">M</div>
-        <div>
-          <div class="wish-name">Meera Patel</div>
-          <div class="wish-stars">★★★★★</div>
-        </div>
-        <div class="wish-date">March 15, 2024</div>
-      </div>
-      <div class="wish-text">Dearest Shatakshi, writing this makes me realize how hard it is to put into words what you mean to me. You've been my roommate, my confidant, my personal stylist, my therapist (unpaid), and my partner in every crime worth committing. I've watched you navigate loss with dignity, chase dreams with ferocity, and love with an openness that terrifies and inspires me. The world is softer because you're in it. Your kindness has ripple effects you'll never fully see - the barista you tipped generously, the stray dog you fed, the friend you checked on at 3 AM, the stranger you smiled at on the metro. You make goodness look effortless. This birthday, I hope you receive even a fraction of the warmth you give. You are loved beyond measure.</div>
-    </article>
-    <article class="wish">
-      <div class="wish-header">
-        <div class="wish-avatar" style="background:#0f172a;">A</div>
-        <div>
-          <div class="wish-name">Arjun Desai</div>
-          <div class="wish-stars">★★★★★</div>
-        </div>
-        <div class="wish-date">March 15, 2024</div>
-      </div>
-      <div class="wish-text">Shats - you know I'm terrible at this emotional stuff, so I'll keep it simple. You're one of the most genuine people I know. In a world full of filters and façades, you're refreshingly, unapologetically real. You laugh loud, cry ugly, love hard, and forgive easy. That's not common. I've seen you at your highest and lowest, and through it all, you've remained kind. That's the marker of character. So here's to another trip around the sun - may it bring you spontaneous road trips, perfectly ripe mangoes, books you can't put down, and moments that take your breath away. And if anyone gives you grief, you know where to find me. Happy Birthday.</div>
-    </article>
-  </div>
+      <button type="submit" class="btn" style="width:100%;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Submit Wish/Confession</button>
+      <p style="text-align:center;margin-top:12px;font-family:'VT323',monospace;color:#c97b7b;font-size:.85rem;">Submitted anonymously. No emails, no tracking, no judgment.</p>
+    </form>
+  </section>
+  
+  <section>
+    <h2 style="font-family:'VT323',monospace;color:#c97b7b;font-size:1.5rem;margin-bottom:20px;text-align:center;">Shared Wishes & Confessions</h2>
+    <div id="reviews-list">
+      <div style="text-align:center;padding:40px;color:#888;">No wishes yet. Be the first to whisper something into the void.</div>
+    </div>
+  </section>
   
   <footer>
     <div class="visitor-box">Visitors: <span class="visitor-counter" id="counter">00000</span></div>
@@ -141,15 +104,128 @@
     <p style="margin-top:10px;color:#888;font-size:.85rem;">Made with love, stardust, and too many coffee runs ☕✨</p>
   </footer>
 
-<script>
-document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
-function updateCounters() {
-  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits')
-    .then(r => r.json())
-    .then(d => { const val = String(d.value).padStart(5, '0'); document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = val); })
-    .catch(() => { document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = '00001'); });
-}
-updateCounters();
+<script type="module">
+// Supabase configuration
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://your-project.supabase.co';
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'your-anon-key-here';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+// Load existing wishes from Supabase on page load
+document.addEventListener('DOMContentLoaded', async () => {
+  const { data: wishes, error } = await supabase
+    .from('wishes')
+    .select('*')
+    .order('created_at', { ascending: false });
+  
+  if (error) console.error('Error loading wishes:', error);
+  
+  const list = document.getElementById('reviews-list');
+  
+  // Clear the "no wishes yet" message if there are wishes
+  const noWishes = list.querySelector('div[style="text-align:center;padding:40px;color:#888;"]');
+  
+  if (wishes && wishes.length > 0) {
+    wishes.forEach((wish, index) => {
+      const article = document.createElement('article');
+      article.className = 'wish';
+      article.style.transition = 'all 0.4s ease';
+      article.innerHTML = `
+        <div class="wish-header">
+          <div class="wish-avatar" style="background:#c97b7b">${wish.name.charAt(0).toUpperCase()}</div>
+          <div>
+            <div class="wish-name">${wish.name}</div>
+            <div class="wish-stars">★★★★★</div>
+          </div>
+          <div class="wish-date">${wish.date}</div>
+        </div>
+        <div class="wish-text">${wish.message}</div>
+      `;
+      list.insertBefore(article, list.firstChild);
+    });
+    
+    // Show/hide the "no wishes" message
+    if (noWishes) {
+      noWishes.style.display = 'none';
+    }
+    
+    // Fade in existing wishes
+    requestAnimationFrame(() => {
+      const articles = list.querySelectorAll('article');
+      articles.forEach((article, i) => {
+        setTimeout(() => {
+          article.style.opacity = '1';
+          article.style.transform = 'translateY(0)';
+        }, i * 100);
+      });
+    });
+  }
+});
+
+// Character counter
+document.getElementById('message').addEventListener('input', () => {
+  const count =  document.getElementById('message').value.length;
+  document.querySelectorAll('.char-count').forEach(el => el.textContent = count);
+});
+
+// Handle form submission
+const form = document.getElementById('review-form');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!name.trim() || !message.trim()) return;
+  
+  // Save to Supabase
+  const { error } = await supabase
+    .from('wishes')
+    .insert([{ name, message, date: new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) }]);
+  
+  if (error) {
+    console.error('Error saving wish:', error);
+    alert('Failed to save wish. Try again.');
+    return;
+  }
+  
+  // Display the new wish immediately (optimistic update)
+  const list = document.getElementById('reviews-list');
+  const article = document.createElement('article');
+  article.className = 'wish';
+  article.style.opacity = '0';
+  article.style.transform = 'translateY(20px)';
+  article.style.transition = 'all 0.4s ease';
+  article.innerHTML = `
+    <div class="wish-header">
+      <div class="wish-avatar" style="background:#c97b7b">${name.charAt(0).toUpperCase()}</div>
+      <div>
+        <div class="wish-name">${name}</div>
+        <div class="wish-stars">★★★★★</div>
+      </div>
+      <div class="wish-date">${new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'})}</div>
+    </div>
+    <div class="wish-text">${message}</div>
+  `;
+  list.insertBefore(article, list.firstChild);
+  requestAnimationFrame(() => {
+    article.style.opacity = '1';
+    article.style.transform = 'translateY(0)';
+  });
+  
+  // Reset form
+  document.getElementById('review-form').reset();
+  
+  // Refresh the list
+  requestAnimationFrame(() => {
+    const articles = list.querySelectorAll('article');
+    articles.forEach((article, i) => {
+      setTimeout(() => {
+        article.style.opacity = '1';
+        article.style.transform = 'translateY(0)';
+      }, i * 100);
+    });
+  });
+  
+  // Update counters
+});
 </script>
 </body>
 </html>

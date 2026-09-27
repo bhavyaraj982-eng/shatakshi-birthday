@@ -25,6 +25,10 @@
   .scrap-icon { font-size: 3rem; margin-bottom: 15px; }
   .scrap-item h3 { font-family: 'VT323', monospace; color: #c97b7b; margin-bottom: 10px; font-size: 1.2rem; }
   .scrap-item p { color: #5a5a5a; }
+  .scrap-item img { width: 100%; max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px; border: 2px solid #f0e6e0; }
+  .scrap-icon { font-size: 3rem; margin-bottom: 15px; }
+  .scrap-item h3 { font-family: 'VT323', monospace; color: #c97b7b; margin-bottom: 10px; font-size: 1.2rem; }
+  .scrap-item p { color: #5a5a5a; }
   footer { text-align: center; padding: 40px 0 20px; border-top: 2px dashed #c97b7b; margin-top: 50px; }
   .visitor-box { display: inline-block; background: #fff; border: 3px inset #c97b7b; padding: 15px 25px; margin: 20px auto; font-family: 'VT323', monospace; font-size: 1.3rem; color: #c97b7b; }
   .visitor-counter { font-family: 'VT323', monospace; font-size: 2rem; color: #c97b7b; font-weight: 700; }
@@ -71,31 +75,37 @@
     <a href="assets/images/GOOD1.jpg" class="scrap-item" target="_blank">
       <div class="scrap-icon">✂️</div>
       <h3>Polaroids</h3>
+      <img src="assets/images/GOOD1.jpg" alt="Polaroids">
       <p>Scattered photos with tiny rotations, each telling a story</p>
     </a>
     <a href="assets/images/GOOD2.jpg" class="scrap-item" target="_blank">
       <div class="scrap-icon">🌸</div>
       <h3>Dried Flowers</h3>
+      <img src="assets/images/GOOD2.jpg" alt="Dried Flowers">
       <p>Pressed blooms that never fade, preserving a moment in time</p>
     </a>
     <a href="assets/images/GOOD3.jpg" class="scrap-item" target="_blank">
       <div class="scrap-icon">📎</div>
       <h3>Ticket Stubs</h3>
+      <img src="assets/images/GOOD3.jpg" alt="Ticket Stubs">
       <p>Movie tickets, concert passes, little pieces of adventures</p>
     </a>
     <a href="assets/images/GOOD4.jpg" class="scrap-item" target="_blank">
       <div class="scrap-icon">📷</div>
       <h3>Sticky Notes</h3>
+      <img src="assets/images/GOOD4.jpg" alt="Sticky Notes">
       <p>Handwritten thoughts, inside jokes, love notes</p>
     </a>
     <a href="assets/images/GOOD5.jpg" class="scrap-item" target="_blank">
       <div class="scrap-icon">✨</div>
       <h3>Little Stars</h3>
+      <img src="assets/images/GOOD5.jpg" alt="Little Stars">
       <p>Tiny decorations that catch the light just right</p>
     </a>
     <a href="assets/images/GOOD6.jpg" class="scrap-item" target="_blank">
       <div class="scrap-icon">🕯️</div>
       <h3>Coffee Rings</h3>
+      <img src="assets/images/GOOD6.jpg" alt="Coffee Rings">
       <p>The mark of late nights and long conversations</p>
     </a>
   </div>
@@ -109,10 +119,12 @@
 <script>
 document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
 function updateCounters() {
-  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits')
-    .then(r => r.json())
-    .then(d => { const val = String(d.value).padStart(5, '0'); document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = val); })
-    .catch(() => { document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = '00001'); });
+  let count = localStorage.getItem('shatakshi_visits');
+  if (!count) count = '00001';
+  else count = String(parseInt(count) + 1).padStart(5, '0');
+  localStorage.setItem('shatakshi_visits', count);
+  document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = count);
+  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits').then(r => r.json()).catch(() => {});
 }
 updateCounters();
 </script>

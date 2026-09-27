@@ -63,8 +63,7 @@
     <a href="index.html">🏠 Home</a>
     <a href="timeline.html">📸 Timeline</a>
     <a href="videos.html">🎬 Videos</a>
-    <a href="scrapbook.html">✂️ Scrapbook</a>
-    <a href="reviews.html">💌 Wishes/Reviews</a>
+    <a href="wishes.html">💌 Wishes/Reviews</a>
     <a href="gallery.html">🖼️ Gallery</a>
     <a href="letter.html">💌 Letter</a>
     <a href="confessions.html">🤫 Confess</a>
@@ -75,7 +74,7 @@
   <p class="tagline">five stars. infinite love. confess something.</p>
   <p class="intro">Everyone wanted to leave you something they'll probably never say this dramatically in person. Or maybe a secret you've never said out loud.</p>
   
-  <section class="confession-form fade-in" style="margin-bottom:30px;">
+  <section class="confession-form">
     <h3>Leave a Wish or Confession</h3>
     <form id="review-form" class="confession-form">
       <div class="form-group">
@@ -93,7 +92,7 @@
   </section>
   
   <section>
-    <h2 style="font-family:'VT323',monospace;color:#c97b7b;font-size:1.5rem;margin-bottom:20px;text-align:center;">Shared Wishes & Confessions</div>
+    <h2 style="font-family:'VT323',monospace;color:#c97b7b;font-size:1.5rem;margin-bottom:20px;text-align:center;">Shared Wishes & Confessions</h2>
     <div id="reviews-list">
       <div style="text-align:center;padding:40px;color:#888;">No wishes yet. Be the first to whisper something into the void.</div>
     </div>
@@ -114,63 +113,87 @@ function updateCounters() {
 }
 updateCounters();
 
-const form = document.getElementById('review-form');
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const message = document.getElementById('message').value.trim();
-  if (!name || !message) return;
+// Load existing wishes from localStorage on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const wishes = JSON.parse(localStorage.getItem('shatakshi_wishes') || '[]');
+  const list = document.getElementById('reviews-list');
   
-  const btn = document.querySelector('.btn');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
+  // Clear the "no wishes yet" message if there are wishes
+  const noWishes = list.querySelector('div[style="text-align:center;padding:40px;color:#888;"]');
   
-  try {
-    const res = await fetch('https://api.countapi.xyz/hit/shatakshi-birthday/confessions', {method:'POST'});
-    const data = await res.json();
-    
-    const optimisticId = `temp-${Date.now()}`;
-    const list = document.getElementById('reviews-list');
+  wishes.forEach((wish, index) => {
     const article = document.createElement('article');
     article.className = 'wish';
-    article.style.opacity = '0';
-    article.style.transform = 'translateY(20px)';
     article.style.transition = 'all 0.4s ease';
     article.innerHTML = `
       <div class="wish-header">
-        <div class="wish-avatar" style="background:${document.getElementById('name').value.charAt(0) || 'A'}">${document.getElementById('name').value.charAt(0).toUpperCase()}</div>
+        <div class="wish-avatar" style="background:#c97b7b">${wish.name.charAt(0).toUpperCase()}</div>
         <div>
-          <div class="wish-name">${document.getElementById('name').value.trim()}</div>
+          <div class="wish-name">${wish.name}</div>
           <div class="wish-stars">★★★★★</div>
         </div>
-        <div class="wish-date">${new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'})}</div>
+        <div class="wish-date">${wish.date}</div>
       </div>
-      <div class="wish-text">${messageInput.value.trim()}</div>
+      <div class="wish-text">${wish.message}</div>
     `;
     list.insertBefore(article, list.firstChild);
-    requestAnimationFrame(() => {
-      article.style.opacity = '1';
-      article.style.transform = 'translateY(0)';
-    });
-    
-    document.getElementById('review-form').reset();
-  } catch (err) {
-    console.error(err);
-    alert('Failed to submit. Try again.');
-  } finally {
-    const btn = document.querySelector('button[type=submit]');
-    btn.disabled = false;
-    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Submit Wish/Confession';
+  });
+  
+  // Show/hide the "no wishes" message
+  if (wishes.length > 0 && noWishes) {
+    noWishes.style.display = 'none';
   }
 });
 
-function updateCounters() {
-  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits')
-    .then(r => r.json())
-    .then(d => { const val = String(d.value).padStart(5, '0'); document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = val); })
-    .catch(() => { document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = '00001'); });
-}
-updateCounters();
+// Character counter
+document.getElementById('message').addEventListener('input', () => {
+  const count = document.getElementById('message').value.length;
+  document.querySelectorAll('.char-count').forEach(el => el.textContent = count);
+});
+
+// Handle form submission
+const form = document.getElementById('review-form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!name.trim() || !message.trim()) return;
+  
+  // Save to localStorage
+  const wishes = JSON.parse(localStorage.getItem('shatakshi_wishes') || '[]');
+  wishes.unshift({ name, message, date: new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) });
+  localStorage.setItem('shatakshi_wishes', JSON.stringify(wishes));
+  
+  // Display the new wish immediately
+  const list = document.getElementById('reviews-list');
+  const article = document.createElement('article');
+  article.className = 'wish';
+  article.style.opacity = '0';
+  article.style.transform = 'translateY(20px)';
+  article.style.transition = 'all 0.4s ease';
+  article.innerHTML = `
+    <div class="wish-header">
+      <div class="wish-avatar" style="background:#c97b7b">${name.charAt(0).toUpperCase()}</div>
+      <div>
+        <div class="wish-name">${name}</div>
+        <div class="wish-stars">★★★★★</div>
+      </div>
+      <div class="wish-date">${new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'})}</div>
+    </div>
+    <div class="wish-text">${message}</div>
+  `;
+  list.insertBefore(article, list.firstChild);
+  requestAnimationFrame(() => {
+    article.style.opacity = '1';
+    article.style.transform = 'translateY(0)';
+  });
+  
+  // Reset form
+  document.getElementById('review-form').reset();
+  
+  // Update counters
+  updateCounters();
+});
 </script>
 </body>
 </html>

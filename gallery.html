@@ -38,7 +38,6 @@
   .delay-5 { animation-delay: 0.25s; }
   .delay-6 { animation-delay: 0.3s; }
   .delay-7 { animation-delay: 0.35s; }
-  .delay-7 { animation-delay: 0.35s; }
   .delay-8 { animation-delay: 0.4s; }
   .delay-9 { animation-delay: 0.45s; }
   .delay-10 { animation-delay: 0.5s; }
@@ -63,12 +62,10 @@
     <a href="index.html">🏠 Home</a>
     <a href="timeline.html">📸 Timeline</a>
     <a href="videos.html">🎬 Videos</a>
-    <a href="scrapbook.html">✂️ Scrapbook</a>
-    <a href="wishes.html">💌 Wishes</a>
+    <a href="wishes.html">💌 Wishes/Reviews</a>
     <a href="gallery.html">🖼️ Gallery</a>
     <a href="letter.html">💌 Letter</a>
-    <a href="confessions.html">🤫 Confessions</a>
-    <a href="dashboard.html">🏛️ Archive</a>
+    <a href="confessions.html">🤫 Confess</a>
   </nav>
 </header>
 <div class="wrap">
@@ -89,7 +86,7 @@
     <div class="gallery-item"><img src="assets/images/GOOD9.jpg" alt="Good 9"></div>
     <div class="gallery-item"><img src="assets/images/GOOD10.jpg" alt="Good 10"></div>
     <div class="gallery-item"><img src="assets/images/GOOFY1.jpg" alt="Goofy 1"></div>
-    <div class="gallery-item"><img src="assets/images/GOOFY2.jpg" alt="Good 2"></div>
+    <div class="gallery-item"><img src="assets/images/GOOFY2.jpg" alt="Goofy 2"></div>
     <div class="gallery-item"><img src="assets/images/GOOFY3.jpg" alt="Goofy 3"></div>
     <div class="gallery-item"><img src="assets/images/SELFIE1.jpg" alt="Selfie 1"></div>
     <div class="gallery-item"><img src="assets/images/SELFIE2.jpg" alt="Selfie 2"></div>
@@ -104,12 +101,13 @@
   </footer>
 
 <script>
-document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
 function updateCounters() {
-  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits')
-    .then(r => r.json())
-    .then(d => { const val = String(d.value).padStart(5, '0'); document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = val); })
-    .catch(() => { document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = '00001'); });
+  let count = localStorage.getItem('shatakshi_visits');
+  if (!count) count = '00001';
+  else count = String(parseInt(count) + 1).padStart(5, '0');
+  localStorage.setItem('shatakshi_visits', count);
+  document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = count);
+  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits').then(r => r.json()).catch(() => {});
 }
 updateCounters();
 </script>
