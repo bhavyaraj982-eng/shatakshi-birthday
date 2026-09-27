@@ -95,7 +95,19 @@
 // Supabase configuration
 const supabaseUrl = 'https://your-project.supabase.co';
 const supabaseKey = 'your-anon-key-here';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+// Initialize supabase safely
+let supabaseInstance = null;
+try {
+  supabaseInstance = supabase.createClient(supabaseUrl, supabaseKey);
+} catch (e) {
+  console.warn('Supabase initialization failed, using fallback mode');
+}
+const supabase = supabaseInstance || {
+  from: () => ({ data: [], error: null }),
+  auth: { getSession: () => Promise.resolve({ data: { session: null } }) }
+};
+
 
 // Character counter
 document.getElementById('message').addEventListener('input', () => {
