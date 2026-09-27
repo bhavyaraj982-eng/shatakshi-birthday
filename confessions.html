@@ -20,7 +20,7 @@
   .tagline { font-family: 'VT323', monospace; font-size: 1.5rem; color: #5a5a5a; text-align: center; margin-top: 10px; letter-spacing: 1px; }
   .intro { text-align: center; max-width: 500px; margin: 0 auto 40px; color: #5a5a5a; font-size: 1.1rem; }
   .confession { background: #fff; border: 1px solid #f0e6e0; border-radius: 12px; padding: 20px; margin-bottom: 15px; position: relative; }
-  .confession-header { display: flex; align-items: center; gap: 10x; margin-bottom: 10px; flex-wrap: wrap; }
+  .confession-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
   .confession-name { background: #fff0f5; color: #c97b7b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; font-family: 'VT323', monospace; }
   .confession-date { color: #888; font-size: 0.85rem; font-family: 'Courier Prime', monospace; }
   .confession-text { color: #4a4a4a; line-height: 1.7; white-space: pre-wrap; font-size: 0.95rem; }
@@ -91,23 +91,48 @@
     <p style="margin-top:10px;color:#888;font-size:.85rem;">Made with love, stardust, and too many coffee runs ☕✨</p>
   </footer>
 
-<script type="module">
-// Supabase configuration
-const supabaseUrl = 'https://your-project.supabase.co';
-const supabaseKey = 'your-anon-key-here';
+<script>
+document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
 
-// Initialize supabase safely
-let supabaseInstance = null;
-try {
-  supabaseInstance = supabase.createClient(supabaseUrl, supabaseKey);
-} catch (e) {
-  console.warn('Supabase initialization failed, using fallback mode');
-}
-const supabase = supabaseInstance || {
-  from: () => ({ data: [], error: null }),
-  auth: { getSession: () => Promise.resolve({ data: { session: null } }) }
-};
-
+// Load existing confessions from localStorage on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const confessions = JSON.parse(localStorage.getItem('shatakshi_confessions') || '[]');
+  const list = document.getElementById('confessions-list');
+  
+  // Clear the "no confessions yet" message if there are confessions
+  const noConfessions = list.querySelector('div[style="text-align:center;padding:40px;color:#888;"]');
+  
+  confessions.forEach((confession, index) => {
+    const article = document.createElement('article');
+    article.style.opacity = '0';
+    article.style.transform = 'translateY(20px)';
+    article.style.transition = 'all 0.4s ease';
+    article.innerHTML = `
+      <div class="confession-header">
+        <span class="confession-name">${confession.name}</span>
+        <span class="confession-date">${new Date(confession.date).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'})}</span>
+      </div>
+      <div class="confession-text">${confession.message}</div>
+    `;
+    list.insertBefore(article, list.firstChild);
+  });
+  
+  // Show/hide the "no confessions yet" message
+  if (confessions.length > 0 && noConfessions) {
+    noConfessions.style.display = 'none';
+  }
+  
+  // Fade in existing confessions
+  requestAnimationFrame(() => {
+    const articles = list.querySelectorAll('article');
+    articles.forEach((article, i) => {
+      setTimeout(() => {
+        article.style.opacity = '1';
+        article.style.transform = 'translateY(0)';
+      }, i * 100);
+    });
+  });
+});
 
 // Character counter
 document.getElementById('message').addEventListener('input', () => {
@@ -115,75 +140,20 @@ document.getElementById('message').addEventListener('input', () => {
   document.querySelectorAll('.char-count').forEach(el => el.textContent = count);
 });
 
-// Load existing confessions from Supabase on page load
-document.addEventListener('DOMContentLoaded', async () => {
-  const { data: confessions, error } = await supabase
-    .from('confessions')
-    .select('*')
-    .order('created_at', { ascending: false });
-  
-  if (error) console.error('Error loading confessions:', error);
-  
-  const list = document.getElementById('confessions-list');
-  
-  // Clear the "no confessions yet" message if there are confessions
-  const noConfessions = list.querySelector('div[style="text-align:center;padding:40px;color:#888;"]');
-  
-  if (confessions && confessions.length > 0) {
-    confessions.forEach((confession, index) => {
-      const article = document.createElement('article');
-      article.style.opacity = '0';
-      article.style.transform = 'translateY(20px)';
-      article.style.transition = 'all 0.4s ease';
-      article.innerHTML = `
-        <div class="confession-header">
-          <span class="confession-name">${confession.name}</span>
-          <span class="confession-date">${new Date(confession.created_at).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'})}</span>
-        </div>
-        <div class="confession-text">${confession.message}</div>
-      `;
-      list.insertBefore(article, list.firstChild);
-    }
-    );
-    
-    // Show/hide the "no confessions yet" message
-    if (noConfessions) {
-      noConfessions.style.display = 'none';
-    }
-    
-    // Fade in existing confessions
-    requestAnimationFrame(() => {
-      const articles = list.querySelectorAll('article');
-      articles.forEach((article, i) => {
-        setTimeout(() => {
-          article.style.opacity = '1';
-          article.style.transform = 'translateY(0)';
-        }, i * 100);
-      });
-    });
-  }
-});
-
-// Handle form submission
+// Handle form submission - prevents URL change, saves to localStorage
 const form = document.getElementById('confession-form');
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = document.getElementById('name').value.trim();
   const message = document.getElementById('message').value.trim();
   if (!name || !message) return;
   
-  // Save to Supabase
-  const { error } = await supabase
-    .from('confessions')
-    .insert([{ name, message, created_at: new Date().toISOString() }]);
+  // Save to localStorage
+  const confessions = JSON.parse(localStorage.getItem('shatakshi_confessions') || '[]');
+  confessions.unshift({ name, message, date: new Date().toLocaleDateString() });
+  localStorage.setItem('shatakshi_confessions', JSON.stringify(confessions));
   
-  if (error) {
-    console.error('Error saving confession:', error);
-    alert('Failed to save confession. Try again.');
-    return;
-  }
-  
-  // Display the new confession immediately (optimistic update)
+  // Display the new confession immediately
   const list = document.getElementById('confessions-list');
   const article = document.createElement('article');
   article.style.opacity = '0';
@@ -215,8 +185,6 @@ form.addEventListener('submit', async (e) => {
       }, i * 100);
     });
   });
-  
-  // Update counters
 });
 </script>
 </body>

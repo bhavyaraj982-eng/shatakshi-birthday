@@ -104,101 +104,80 @@
     <p style="margin-top:10px;color:#888;font-size:.85rem;">Made with love, stardust, and too many coffee runs ☕✨</p>
   </footer>
 
-<script type="module">
-// Supabase configuration
-const supabaseUrl = 'https://your-project.supabase.co';
-const supabaseKey = 'your-anon-key-here';
-
-// Initialize supabase safely
-let supabaseInstance = null;
-try {
-  supabaseInstance = supabase.createClient(supabaseUrl, supabaseKey);
-} catch (e) {
-  console.warn('Supabase initialization failed, using fallback mode');
+<script>
+function updateCounters() {
+  // Simple counter using localStorage
+  let count = localStorage.getItem('shatakshi_visits');
+  if (!count) count = '0';
+  else count = String(parseInt(count) + 1).padStart(5, '0');
+  localStorage.setItem('shatakshi_visits', count);
+  document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = count);
 }
-const supabase = supabaseInstance || {
-  from: () => ({ data: [], error: null }),
-  auth: { getSession: () => Promise.resolve({ data: { session: null } }) }
-};
+updateCounters();
 
-
-// Load existing wishes from Supabase on page load
-document.addEventListener('DOMContentLoaded', async () => {
-  const { data: wishes, error } = await supabase
-    .from('wishes')
-    .select('*')
-    .order('created_at', { ascending: false });
-  
-  if (error) console.error('Error loading wishes:', error);
-  
+// Load existing wishes from localStorage on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const wishes = JSON.parse(localStorage.getItem('shatakshi_wishes') || '[]');
   const list = document.getElementById('reviews-list');
   
   // Clear the "no wishes yet" message if there are wishes
   const noWishes = list.querySelector('div[style="text-align:center;padding:40px;color:#888;"]');
   
-  if (wishes && wishes.length > 0) {
-    wishes.forEach((wish, index) => {
-      const article = document.createElement('article');
-      article.className = 'wish';
-      article.style.transition = 'all 0.4s ease';
-      article.innerHTML = `
-        <div class="wish-header">
-          <div class="wish-avatar" style="background:#c97b7b">${wish.name.charAt(0).toUpperCase()}</div>
-          <div>
-            <div class="wish-name">${wish.name}</div>
-            <div class="wish-stars">★★★★★</div>
-          </div>
-          <div class="wish-date">${wish.date}</div>
+  wishes.forEach((wish, index) => {
+    const article = document.createElement('article');
+    article.className = 'wish';
+    article.style.transition = 'all 0.4s ease';
+    article.innerHTML = `
+      <div class="wish-header">
+        <div class="wish-avatar" style="background:#c97b7b">${wish.name.charAt(0).toUpperCase()}</div>
+        <div>
+          <div class="wish-name">${wish.name}</div>
+          <div class="wish-stars">★★★★★</div>
         </div>
-        <div class="wish-text">${wish.message}</div>
-      `;
-      list.insertBefore(article, list.firstChild);
-    });
-    
-    // Show/hide the "no wishes" message
-    if (noWishes) {
-      noWishes.style.display = 'none';
-    }
-    
-    // Fade in existing wishes
-    requestAnimationFrame(() => {
-      const articles = list.querySelectorAll('article');
-      articles.forEach((article, i) => {
-        setTimeout(() => {
-          article.style.opacity = '1';
-          article.style.transform = 'translateY(0)';
-        }, i * 100);
-      });
-    });
+        <div class="wish-date">${wish.date}</div>
+      </div>
+      <div class="wish-text">${wish.message}</div>
+    `;
+    list.insertBefore(article, list.firstChild);
+  });
+  
+  // Show/hide the "no wishes" message
+  if (wishes.length > 0 && noWishes) {
+    noWishes.style.display = 'none';
   }
+  
+  // Fade in existing wishes
+  requestAnimationFrame(() => {
+    const articles = list.querySelectorAll('article');
+    articles.forEach((article, i) => {
+      setTimeout(() => {
+        article.style.opacity = '1';
+        article.style.transform = 'translateY(0)';
+      }, i * 100);
+    });
+  });
 });
 
 // Character counter
 document.getElementById('message').addEventListener('input', () => {
-  const count =  document.getElementById('message').value.length;
+  const count = document.getElementById('message').value.length;
   document.querySelectorAll('.char-count').forEach(el => el.textContent = count);
 });
 
-// Handle form submission
+// Handle form submission - prevents URL change, saves to localStorage
 const form = document.getElementById('review-form');
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = document.getElementById('name').value.trim();
   const message = document.getElementById('message').value.trim();
   if (!name.trim() || !message.trim()) return;
   
-  // Save to Supabase
-  const { error } = await supabase
-    .from('wishes')
-    .insert([{ name, message, date: new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) }]);
+  // Save to localStorage
+  const wishes = JSON.parse(localStorage.getItem('shatakshi_wishes') || '[]');
+  wishes.unshift({ name, message, date: new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) });
+  localStorage.setItem('shatakshi_wishes', JSON.stringify(wishes));
   
-  if (error) {
-    console.error('Error saving wish:', error);
-    alert('Failed to save wish. Try again.');
-    return;
-  }
-  
-  // Display the new wish immediately (optimistic update)
+  // Display the new wish immediately
   const list = document.getElementById('reviews-list');
   const article = document.createElement('article');
   article.className = 'wish';
@@ -226,6 +205,7 @@ form.addEventListener('submit', async (e) => {
   document.getElementById('review-form').reset();
   
   // Refresh the list
+  updateCounters();
   requestAnimationFrame(() => {
     const articles = list.querySelectorAll('article');
     articles.forEach((article, i) => {
@@ -235,8 +215,6 @@ form.addEventListener('submit', async (e) => {
       }, i * 100);
     });
   });
-  
-  // Update counters
 });
 </script>
 </body>
