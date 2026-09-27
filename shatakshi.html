@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shatakshi ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Courier+Prime:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Courier Prime', monospace;
+    background: #fdf5e6;
+    color: #2b2b2b;
+    line-height: 1.7;
+    min-height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  }
+  
+  .wrap { max-width: 700px; margin: 0 auto; padding: 20px; }
+  
+  /* Simple header */
+  header {
+    text-align: center;
+    padding: 40px 0 30px;
+    border-bottom: 3px double #c97b7b;
+    margin-bottom: 30px;
+  }
+  
+  .site-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    color: #c97b7b;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  .tagline {
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    color: #5a5a5a;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+  
+  /* Simple nav */
+  .nav-bar {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+    padding: 15px 0;
+    border-top: 2px dashed #c97b7b;
+    border-bottom: 2px dashed #c97b7b;
+  }
+  
+  .nav-bar a {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #fff;
+    border: 2px solid #e8d5e0;
+    color: #c97b7b;
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    border-radius: 20px;
+  }
+  
+  .nav-bar a:hover {
+    background: #fff0f5;
+    border-color: #c97b7b;
+    color: #a64d4d;
+    transform: translateY(-2px);
+  }
+  
+  .wrap { max-width: 700px; margin: 0 auto; padding: 20px; }
+  
+  h1 { 
+    font-family: 'VT323', monospace; 
+    font-size: 2.5rem; 
+    color: #c97b7b; 
+    text-align: center; 
+    margin-bottom: 10px;
+  }
+  
+  .tagline {
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    color: #5a5a5a;
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .intro {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    color: #5a5a5a;
+    font-size: 1.1rem;
+  }
+  
+  /* Chapter cards */
+  .chapters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .chapter-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 2px solid #ffe4ec;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  
+  .chapter-card:hover {
+    border-color: #c97b7b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(201, 123, 123, 0.15);
+  }
+  
+  .chapter-icon { font-size: 2.5rem; margin-bottom: 8px; }
+  .chapter-title { 
+    font-family: 'VT323', monospace; 
+    font-size: 1.1rem; 
+    color: #c97b7b; 
+    display: block; 
+    margin-bottom: 8px; 
+  }
+  .chapter-desc { color: #888; font-size: 0.85rem; }
+  
+  footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    border-top: 2px dashed #c97b7b;
+    margin-top: 50px;
+  }
+  
+  .visitor-box {
+    display: inline-block;
+    background: #fff;
+    border: 3px inset #c97b7b;
+    padding: 15px 25px;
+    margin: 20px auto;
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    color: #c97b7b;
+  }
+  
+  .visitor-counter {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    color: #c97b7b;
+    font-weight: 700;
+  }
+  
+  footer p { color: #888; font-size: 0.9rem; }
+  
+  .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.6s ease forwards; }
+  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+  .delay-6 { animation-delay: 0.6s; }
+  .delay-7 { animation-delay: 0.6s; }
+  .delay-8 { animation-delay: 0.7s; }
+  
+  @media (max-width: 600px) {
+    .wrap { padding: 15px; }
+    h1 { font-size: 2rem; }
+  }
+  
+  ::selection { background: #c97b7b; color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="masthead">
+    <div class="site-title">FOR SHATAKSHI</div>
+    <p class="tagline">a little corner of the internet, just for you</p>
+  </header>
+  
+  <nav class="nav-bar">
+    <a href="timeline.html">📸 Timeline</a>
+    <a href="videos.html">🎬 Videos</a>
+    <a href="scrapbook.html">✂️ Scrapbook</a>
+    <a href="wishes.html">💌 Wishes</a>
+    <a href="gallery.html">🖼️ Gallery</a>
+    <a href="letter.html">💌 Letter</a>
+    <a href="confessions.html">🤫 Confessions</a>
+    <a href="dashboard.html">🏛️ Archive</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <h1>For Shatakshi</h1>
+  <p class="tagline">a little corner of the internet, just for you</p>
+  <p class="intro">This isn't just a birthday wish. It's a collection of moments, memories, and messages from the people who love you. Every photo, every word — chosen because you matter.</p>
+  
+  <div class="chapters">
+    <a href="timeline.html" class="chapter-card">
+      <div class="chapter-icon">📸</div>
+      <span class="chapter-title">Memory Film</span>
+      <p class="chapter-desc">Childhood to now — the years in frames</p>
+    </a>
+    <a href="videos.html" class="chapter-card">
+      <div class="chapter-icon">🎬</div>
+      <span class="chapter-title">Video Letters</span>
+      <p class="chapter-desc">Moments that move and breathe</p>
+    </a>
+    <a href="scrapbook.html" class="chapter-card">
+      <div class="chapter-icon">✂️</div>
+      <span class="chapter-title">Scrapbook Desk</span>
+      <p class="chapter-desc">Polaroids, stickers, dried flowers</p>
+    </a>
+    <a href="wishes.html" class="chapter-card">
+      <div class="chapter-icon">💌</div>
+      <span class="chapter-title">Love Letters</span>
+      <p class="chapter-desc">Five stars. Infinite love.</p>
+    </a>
+    <a href="gallery.html" class="chapter-card">
+      <div class="chapter-icon">🖼️</div>
+      <span class="chapter-title">Photo Wall</span>
+      <p class="chapter-desc">Your wall of moments</p>
+    </a>
+    <a href="letter.html" class="chapter-card">
+      <div class="chapter-icon">💌</div>
+      <span class="chapter-title">Final Letter</span>
+      <p class="chapter-desc">The last page. The truest words.</p>
+    </a>
+    <a href="confessions.html" class="chapter-card">
+      <div class="chapter-icon">🤫</div>
+      <span class="chapter-title">Confessions</span>
+      <p class="chapter-desc">Anonymous whispers. Safe space.</p>
+    </a>
+    <a href="dashboard.html" class="chapter-card">
+      <div class="chapter-icon">🏛️</div>
+      <span class="chapter-title">Grand Archive</span>
+      <p class="chapter-desc">All chapters unlocked. Forever.</p>
+    </a>
+  </div>
+  
+  <footer>
+    <div class="visitor-box">
+      Visitors: <span class="visitor-counter" id="counter">00000</span>
+    </div>
+    <p style="font-family:'VT323',monospace;color:#c97b7b;font-size:1.2rem;margin-top:15px;">
+      For Shatakshi • Always • ∞
+    </p>
+    <p style="margin-top:10px;color:#888;font-size:.85rem;">
+      Made with love, stardust, and too many coffee runs ☕✨
+    </p>
+  </footer>
+</div>
+
+<script>
+// Visitor counter
+function updateCounters() {
+  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits')
+    .then(r => r.json())
+    .then(d => {
+      const val = String(d.value).padStart(5, '0');
+      document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = val);
+    })
+    .catch(() => {
+      document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = '00001');
+    });
+}
+updateCounters();
+</script>
+</body>
+</html>

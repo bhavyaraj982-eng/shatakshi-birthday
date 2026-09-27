@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Film • For Shatakshi</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Courier+Prime:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Courier Prime', monospace; background: #fdf5e6; color: #2b2b2b; line-height: 1.7; min-height: 100vh; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3C/svg%3E"); }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 20px; }
+  header { text-align: center; padding: 40px 0 30px; border-bottom: 3px double #c97b7b; margin-bottom: 30px; }
+  .site-title { font-family: 'Press Start 2P', cursive; font-size: 1.5rem; color: #c97b7b; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .tagline { font-family: 'VT323', monospace; font-size: 1.5rem; color: #5a5a5a; margin-top: 10px; letter-spacing: 1px; }
+  .nav-bar { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 30px 0; padding: 15px 0; border-top: 2px dashed #c97b7b; border-bottom: 2px dashed #c97b7b; }
+  .nav-bar a { display: inline-block; padding: 10px 18px; background: #fff; border: 2px solid #e8d5e0; color: #c97b7b; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; border-radius: 20px; }
+  .nav-bar a:hover { background: #fff0f5; border-color: #c97b7b; color: #a64d4d; transform: translateY(-2px); }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 20px; }
+  h1 { font-family: 'VT323', monospace; font-size: 2.5rem; color: #c97b7b; text-align: center; margin-bottom: 10px; }
+  .tagline { font-family: 'VT323', monospace; font-size: 1.5rem; color: #5a5a5a; text-align: center; margin-top: 10px; letter-spacing: 1px; }
+  .intro { text-align: center; max-width: 500px; margin: 0 auto 40px; color: #5a5a5a; font-size: 1.1rem; }
+  .timeline { position: relative; padding-left: 30px; margin-top: 30px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, transparent, #c97b7b, transparent); }
+  .timeline-item { position: relative; padding-left: 30px; margin-bottom: 30px; }
+  .timeline-item::before { content: ''; position: absolute; left: -36px; top: 5px; width: 14px; height: 14px; border-radius: 50%; background: #c97b7b; border: 3px solid #fff; box-shadow: 0 0 0 3px #fdf5e6; }
+  .timeline-item h3 { font-family: 'VT323', monospace; color: #c97b7b; margin-bottom: 5px; font-size: 1.3rem; }
+  .timeline-item p { color: #5a5a5a; font-size: 0.95rem; }
+  .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
+  .photo-item { aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5f0eb; transition: transform 0.3s; }
+  .photo-item:hover { transform: scale(1.03); }
+  .photo-item img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, #fde4ec 0%, #fff0e0 100%); }
+  footer { text-align: center; padding: 40px 0 20px; border-top: 2px dashed #c97b7b; margin-top: 50px; }
+  .visitor-box { display: inline-block; background: #fff; border: 3px inset #c97b7b; padding: 15px 25px; margin: 20px auto; font-family: 'VT323', monospace; font-size: 1.3rem; color: #c97b7b; }
+  .visitor-counter { font-family: 'VT323', monospace; font-size: 2rem; color: #c97b7b; font-weight: 700; }
+  footer p { color: #888; font-size: 0.9rem; }
+  .fade-in { opacity: 0; transform: translateY(20px); animation: fadeIn 0.6s ease forwards; }
+  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+  .delay-6 { animation-delay: 0.6s; }
+  .delay-7 { animation-delay: 0.6s; }
+  .delay-8 { animation-delay: 0.7s; }
+  @media (max-width: 600px) { .wrap { padding: 15px; } h1 { font-size: 2rem; } }
+  ::selection { background: #c97b7b; color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="masthead">
+    <div class="site-title">FOR SHATAKSHI</div>
+    <p class="tagline">memory film</p>
+  </header>
+  <nav class="nav-bar">
+    <a href="index.html">🏠 Home</a>
+    <a href="timeline.html">📸 Timeline</a>
+    <a href="videos.html">🎬 Videos</a>
+    <a href="scrapbook.html">✂️ Scrapbook</a>
+    <a href="wishes.html">💌 Wishes</a>
+    <a href="gallery.html">🖼️ Gallery</a>
+    <a href="letter.html">💌 Letter</a>
+    <a href="confessions.html">🤫 Confessions</a>
+    <a href="dashboard.html">🏛️ Archive</a>
+  </nav>
+</header>
+<div class="wrap">
+  <h1>Memory Film</h1>
+  <p class="tagline">childhood to now — the years in frames</p>
+  <p class="intro">Roll the film. Watch the years unfold. From first steps to favorite moments — every frame a memory.</p>
+  
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Childhood</h3>
+      <p>First steps, first words, first everything. The years when everything was magic.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Goofy</h3>
+      <p>Making faces, caught mid-laugh, silly selfies. The moments you couldn't plan.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Beautiful You</h3>
+      <p>Golden hour portraits, candid smiles, thoughtful gazes. You, simply being you.</    <div class="timeline-item">
+      <h3>Our Favourite Moments</h3>
+      <p>Trips together, celebrations, quiet moments. The memories we'll keep forever.</p>
+    </div>
+  </div>
+  
+  <div class="photo-grid">
+    <div class="photo-item"><img src="assets/images/GOOD1.jpg" alt="Memory 1"></div>
+    <div class="photo-item"><img src="assets/images/GOOD2.jpg" alt="Memory 2"></div>
+    <div class="photo-item"><img src="assets/images/GOOD3.jpg" alt="Memory 3"></div>
+    <div class="photo-item"><img src="assets/images/GOOD4.jpg" alt="Memory 4"></div>
+    <div class="photo-item"><img src="assets/images/GOOD5.jpg" alt="Memory 5"></div>
+    <div class="photo-item"><img src="assets/images/GOOD6.jpg" alt="Memory 6"></div>
+    <div class="photo-item"><img src="assets/images/GOOD7.jpg" alt="Memory 7"></div>
+    <div class="photo-item"><img src="assets/images/GOOD8.jpg" alt="Memory 8"></div>
+    <div class="photo-item"><img src="assets/images/GOOD9.jpg" alt="Memory 9"></div>
+    <div class="photo-item"><img src="assets/images/GOOD10.jpg" alt="Memory 10"></div>
+    <div class="photo-item"><img src="assets/images/GOOFY1.jpg" alt="Memory 11"></div>
+    <div class="photo-item"><img src="assets/images/GOOFY2.jpg" alt="Memory 12"></div>
+    <div class="photo-item"><img src="assets/images/GOOFY3.jpg" alt="Memory 13"></div>
+    <div class="photo-item"><img src="assets/images/SELFIE1.jpg" alt="Memory 14"></div>
+    <div class="photo-item"><img src="assets/images/SELFIE2.jpg" alt="Memory 15"></div>
+    <div class="photo-item"><img src="assets/images/TOGETHER1.jpg" alt="Memory 16"></div>
+    <div class="photo-item"><img src="assets/images/COVER PAGE.jpg" alt="Cover"></div>
+    <div class="photo-item"><img src="assets/images/GOOD1.jpg" alt="Memory 1"></div>
+    <div class="photo-item"><img src="assets/images/GOOD2.jpg" alt="Memory 2"></div>
+  </div>
+  
+  <footer>
+    <div class="visitor-box">Visitors: <span class="visitor-counter" id="counter">00000</span></div>
+    <p style="font-family:'VT323',monospace;color:#c97b7b;font-size:1.2rem;margin-top:15px;">For Shatakshi • Always • ∞</p>
+    <p style="margin-top:10px;color:#888;font-size:.85rem;">Made with love, stardust, and too many coffee runs ☕✨</p>
+  </footer>
+
+<script>
+document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+function updateCounters() {
+  fetch('https://api.countapi.xyz/hit/shatakshi-birthday/visits')
+    .then(r => r.json())
+    .then(d => { const val = String(d.value).padStart(5, '0'); document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = val); })
+    .catch(() => { document.querySelectorAll('.visitor-counter').forEach(el => el.textContent = '00001'); });
+}
+updateCounters();
+</script>
+</body>
+</html>
